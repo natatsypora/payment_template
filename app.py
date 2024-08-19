@@ -49,7 +49,7 @@ avs(1)
 tab1, tab2 = st.tabs(["תשלומים", "לוחות שנה"])
 with tab1:
     tab_df, tab_img = st.columns(2)
-    #tab_img.image(img)
+    tab_img.image('image/Check-Printing.png')
     tab_img.write()
 
 #----------Definition of tabs--------------------------------------------------------------
