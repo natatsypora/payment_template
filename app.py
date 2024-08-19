@@ -5,10 +5,7 @@ from pandas.tseries.offsets import CustomBusinessDay
 from streamlit_extras.add_vertical_space import add_vertical_space as avs
 import xlsxwriter
 from io import BytesIO
-from PIL import Image
 
-# Page image
-#img = Image.open(r'image\Check-Printing.png')
 
 # Define the Google Drive file URL
 buffer = BytesIO()
@@ -134,7 +131,7 @@ if choose == "**מתחיל מתאריך**":
                         data=buffer,
                         file_name="payments_start.xlsx",
                         mime="application/vnd.ms-excel")
-                tab_img.image(r"image\save_as_scv2.jpg")                
+                tab_img.image("image/save_as_scv2.jpg")                
                 
 #-------------**התאריך הממוצע**-------------------------------------------    
 if choose == "**התאריך הממוצע**":
@@ -189,7 +186,7 @@ if choose == "**התאריך הממוצע**":
                         data=buffer,
                         file_name="payments_middle.xlsx",
                         mime="application/vnd.ms-excel")
-                tab_img.image(r"image\save_as_scv2.jpg")                         
+                tab_img.image("image/save_as_scv2.jpg")                         
                
 with st.sidebar:    
     avs(5)         # add 5 vertical spaces
