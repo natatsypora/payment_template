@@ -8,7 +8,7 @@ from io import BytesIO
 from PIL import Image
 
 # Page image
-img = Image.open('image\Check-Printing.png')
+img = Image.open('image\\Check-Printing.png')
 
 # Define the Google Drive file URL
 buffer = BytesIO()
@@ -22,7 +22,7 @@ with open("style.css") as css:
 
 # Define the properties for styling the dataframe
 properties = {'background-color': 'rgba(255, 255, 255, 0.3)', 
-              "font-size": "16px" }
+              "font-size": "16px"}
 #---------------------------------------------------------------
 # Initialize the session state
 if 'h_days' not in st.session_state:
