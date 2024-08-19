@@ -8,7 +8,7 @@ from io import BytesIO
 from PIL import Image
 
 # Page image
-img = Image.open('image\\Check-Printing.png')
+img = Image.open(r'image\Check-Printing.png')
 
 # Define the Google Drive file URL
 buffer = BytesIO()
