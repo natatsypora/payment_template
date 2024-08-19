@@ -61,11 +61,11 @@ with tab2.expander("2024-2026 לוח חופשות"):
         r_col.link_button("לוחות שנה עם חגים", "https://calendar.2net.co.il/annual-calendar.aspx", use_container_width=True)
         r_col.link_button('ימי פעילות מערכת זה"ב', "https://www.boi.org.il/roles/paymentsystems/ilpaymentsystems/zahav/", use_container_width=True)
 with tab2.expander("2024 לוח שנתי עם חגים"):
-    st.image("image\calendar2024.jpg")
+    st.image(r"image\calendar2024.jpg")
 with tab2.expander("2025 לוח שנתי עם חגים"):
-    st.image("image\calendar2025.jpg")
+    st.image(r"image\calendar2025.jpg")
 with tab2.expander("2026 לוח שנתי עם חגים"):
-    st.image("image\calendar2026.jpg")        
+    st.image(r"image\calendar2026.jpg")        
 
 #=================Sidebar========================================================
 with st.sidebar:
@@ -134,7 +134,7 @@ if choose == "**מתחיל מתאריך**":
                         data=buffer,
                         file_name="payments_start.xlsx",
                         mime="application/vnd.ms-excel")
-                tab_img.image("image\save_as_scv2.jpg")                
+                tab_img.image(r"image\save_as_scv2.jpg")                
                 
 #-------------**התאריך הממוצע**-------------------------------------------    
 if choose == "**התאריך הממוצע**":
@@ -189,7 +189,7 @@ if choose == "**התאריך הממוצע**":
                         data=buffer,
                         file_name="payments_middle.xlsx",
                         mime="application/vnd.ms-excel")
-                tab_img.image("image\save_as_scv2.jpg")                         
+                tab_img.image(r"image\save_as_scv2.jpg")                         
                
 with st.sidebar:    
     avs(5)         # add 5 vertical spaces
