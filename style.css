@@ -1,0 +1,27 @@
+[data-testid="stAppViewBlockContainer"],
+.st-emotion-cache-13ln4jf{
+    width: 100%;
+    padding: 3rem 1rem 2rem;
+    max-width: 50rem;
+}
+
+section[data-testid="stSidebar"] {
+    width: 250px;
+    }
+
+button[data-baseweb="tab"] {
+    border-radius: 5px 5px 0 0;
+    color: #0a2743;
+    background: #b8d2e7;
+    padding: 10px;
+} 
+
+div [data-testid="stMarkdownContainer"] > p { 
+    font-size: 16px;
+} 
+
+:focus[data-baseweb="tab"] {
+    font-size: 16px;
+    background: rgb(30, 84, 115);
+    color: rgb(221 233 245);    
+}
