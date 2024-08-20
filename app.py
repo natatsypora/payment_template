@@ -20,9 +20,6 @@ properties = {'background-color': 'rgba(255, 255, 255, 0.3)',
               "font-size": "16px"}
 #---------------------------------------------------------------
 
-# Set timezone to Israel
-israel_tz = pytz.timezone("Asia/Jerusalem")
-
 # Define the Google Drive file URL
 buffer = BytesIO()
 
@@ -73,8 +70,8 @@ with tab2.expander("2026 לוח שנתי עם חגים"):
 
 #=================Sidebar========================================================
 with st.sidebar:
-        st.write(dt.now(tzinfo=israel_tz).strftime("Today is %A :**%d %B %Y**"), unsafe_allow_html=True)
-        st.write(dt.now(tzinfo=israel_tz).strftime("&emsp;Current time : **%I:%M %p**"), unsafe_allow_html=True)
+        st.write(dt.now(pytz.timezone('Israel')).strftime("Today is %A :**%d %B %Y**"), unsafe_allow_html=True)
+        st.write(dt.now(pytz.timezone('Israel')).strftime("&emsp;Current time : **%I:%M %p**"), unsafe_allow_html=True)
         st.divider()
 choose = st.sidebar.radio(
         "בחר תבנית ליצירת הרשימה",
