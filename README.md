@@ -21,16 +21,6 @@ Export the payment list to Excel for further preparation of payments
 
 ![image](https://github.com/user-attachments/assets/b699a311-6bc9-4942-a404-5c926258ab01)
 
- ## Getting Started
-
-Clone the repository to your local machine  
-Install the required libraries by running pip install -r requirements.txt  
-Run the application by executing streamlit run app.py  
-
-
-
-
-
 
 
 
