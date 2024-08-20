@@ -85,7 +85,7 @@ if choose == "**מתחיל מתאריך**":
     date_from = st.sidebar.date_input("בחר תאריך תחילת התשלום ", value=None)  
     if date_from == None:
         st.stop()  
-    if date_from < today_is.date():
+    if date_from < today_is:
         st.sidebar.warning('יום התשלום הראשון לא יכול להיות מוקדם יותר מאשר היום', icon="🚨")
         st.stop()
     else: 
@@ -140,7 +140,7 @@ if choose == "**התאריך הממוצע**":
     middle_date = st.sidebar.date_input("בחר תאריך הממוצע לתשלום ", value=None)  
     if middle_date == None:
         st.stop()  
-    if middle_date < today_is.date():
+    if middle_date < today_is:
         st.sidebar.warning('התאריך הממוצע לא יכול להיות מוקדם יותר מאשר היום', icon="🚨")
         st.stop()
     else: 
