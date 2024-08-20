@@ -37,6 +37,8 @@ st.session_state.h_days = h_days
 holidays = h_days['תאריך'].tolist()
 custom_bd_6 = CustomBusinessDay(weekmask='Sun Mon Tue Wed Thu Fri', holidays=holidays)
 custom_bd_5 = CustomBusinessDay(weekmask='Sun Mon Tue Wed Thu', holidays=holidays)
+st.session_state.custom_bd_6 = custom_bd_6
+st.session_state.custom_bd_5 = custom_bd_5
 
 #----------Header and body------------------------------------------------------------   
 st.markdown("<p style='text-align: center; color: rgb(10 39 67); font-size: 1.5em'>ברוכים הבאים לאתר שיעזור לכם להכין בקלות רשימת תשלומים בהתבסס על התאריך, הסכום, מספר התשלומים וימי העבודה בשבוע</p>", unsafe_allow_html=True)
@@ -66,8 +68,8 @@ with tab2.expander("2026 לוח שנתי עם חגים"):
 
 #=================Sidebar========================================================
 with st.sidebar:
-        st.markdown(f'<p style="text-align: center; font-size: 1.0em">Today is \
-                    <b>{today_is.strftime("%d-%m-%Y")}</b></p>', unsafe_allow_html=True)
+        st.write(dt.today().strftime("Today is %A :**%d %B %Y**"), unsafe_allow_html=True)
+        st.write(dt.now().strftime("&emsp;Current time : **%I:%M %p**"), unsafe_allow_html=True)
         st.divider()
 choose = st.sidebar.radio(
         "בחר תבנית ליצירת הרשימה",
@@ -83,7 +85,7 @@ if choose == "**מתחיל מתאריך**":
     date_from = st.sidebar.date_input("בחר תאריך תחילת התשלום ", value=None)  
     if date_from == None:
         st.stop()  
-    if date_from < today_is:
+    if date_from < today_is.date():
         st.sidebar.warning('יום התשלום הראשון לא יכול להיות מוקדם יותר מאשר היום', icon="🚨")
         st.stop()
     else: 
@@ -138,7 +140,7 @@ if choose == "**התאריך הממוצע**":
     middle_date = st.sidebar.date_input("בחר תאריך הממוצע לתשלום ", value=None)  
     if middle_date == None:
         st.stop()  
-    if middle_date < today_is:
+    if middle_date < today_is.date():
         st.sidebar.warning('התאריך הממוצע לא יכול להיות מוקדם יותר מאשר היום', icon="🚨")
         st.stop()
     else: 
