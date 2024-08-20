@@ -5,10 +5,8 @@ from pandas.tseries.offsets import CustomBusinessDay
 from streamlit_extras.add_vertical_space import add_vertical_space as avs
 import xlsxwriter
 from io import BytesIO
+import pytz
 
-
-# Define the Google Drive file URL
-buffer = BytesIO()
 
 #----------Page config-------------------------------------------------------
 st.set_page_config(page_title="Payment list", page_icon="🗓️", layout="wide")
@@ -21,6 +19,13 @@ with open("style.css") as css:
 properties = {'background-color': 'rgba(255, 255, 255, 0.3)', 
               "font-size": "16px"}
 #---------------------------------------------------------------
+
+# Set timezone to Israel
+israel_tz = pytz.timezone("Asia/Jerusalem")
+
+# Define the Google Drive file URL
+buffer = BytesIO()
+
 # Initialize the session state
 if 'h_days' not in st.session_state:
     st.session_state.h_days = None
@@ -68,8 +73,8 @@ with tab2.expander("2026 לוח שנתי עם חגים"):
 
 #=================Sidebar========================================================
 with st.sidebar:
-        st.write(dt.today().strftime("Today is %A :**%d %B %Y**"), unsafe_allow_html=True)
-        st.write(dt.now().strftime("&emsp;Current time : **%I:%M %p**"), unsafe_allow_html=True)
+        st.write(dt.now(tzinfo=israel_tz).strftime("Today is %A :**%d %B %Y**"), unsafe_allow_html=True)
+        st.write(dt.now(tzinfo=israel_tz).strftime("&emsp;Current time : **%I:%M %p**"), unsafe_allow_html=True)
         st.divider()
 choose = st.sidebar.radio(
         "בחר תבנית ליצירת הרשימה",
