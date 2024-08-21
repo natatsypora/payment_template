@@ -1,10 +1,11 @@
 import pandas as pd
 import streamlit as st
 from datetime import date, timedelta, datetime as dt
+import pytz
 
 
 # Define the  date of today
-today_is = dt.today().date()
+today_is = dt.now(pytz.timezone('Israel'))
 
 # Define the Google Drive file URL
 # holidays.csv'
@@ -51,7 +52,7 @@ def sequence_workdays_middle(middle_date, custom_bd, sum_of_payments, n_payments
                                      freq=-custom_bd,
                                      name='pay_days')    
         min_day = range_before.min().date()
-        if min_day < today_is:
+        if min_day < today_is.date():
             st.warning(f'תאריך תשלום מינימלי הוא {min_day}.\
                        שנה את התאריך,יום התשלום הראשון לא יכול להיות מוקדם יותר מאשר היום', icon= "🚨") 
             st.stop()       
