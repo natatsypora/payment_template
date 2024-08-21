@@ -4,9 +4,6 @@ from datetime import date, timedelta, datetime as dt
 import pytz
 
 
-# Define the  date of today
-today_is = dt.now(pytz.timezone('Israel'))
-
 # Define the Google Drive file URL
 # holidays.csv'
 url = 'https://drive.google.com/file/d/1G_U4o89-RUjIaTB466grwhLnWZ2dkNuU/view?usp=sharing'
@@ -52,7 +49,7 @@ def sequence_workdays_middle(middle_date, custom_bd, sum_of_payments, n_payments
                                      freq=-custom_bd,
                                      name='pay_days')    
         min_day = range_before.min().date()
-        if min_day < today_is.date():
+        if min_day < dt.now(pytz.timezone('Israel')).date():
             st.warning(f'תאריך תשלום מינימלי הוא {min_day}.\
                        שנה את התאריך,יום התשלום הראשון לא יכול להיות מוקדם יותר מאשר היום', icon= "🚨") 
             st.stop()       

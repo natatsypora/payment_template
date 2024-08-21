@@ -70,8 +70,8 @@ with tab2.expander("2026 לוח שנתי עם חגים"):
 
 #=================Sidebar========================================================
 with st.sidebar:
-        st.write(today_is.strftime("Today is %A : **%d %B %Y**"), unsafe_allow_html=True)
-        st.write(today_is.strftime("&emsp;Current time : **%I:%M %p**"), unsafe_allow_html=True)
+        st.write(dt.now(pytz.timezone('Israel')).strftime("Today is %A : **%d %B %Y**"), unsafe_allow_html=True)
+        st.write(dt.now(pytz.timezone('Israel')).strftime("&emsp;Current time : **%I:%M %p**"), unsafe_allow_html=True)
         st.divider()
 choose = st.sidebar.radio(
         "בחר תבנית ליצירת הרשימה",
@@ -87,7 +87,7 @@ if choose == "**מתחיל מתאריך**":
     date_from = st.sidebar.date_input("בחר תאריך תחילת התשלום ", value=None)  
     if date_from == None:
         st.stop()  
-    if date_from < today_is.date():
+    if date_from < dt.now(pytz.timezone('Israel')).date():
         st.sidebar.warning('יום התשלום הראשון לא יכול להיות מוקדם יותר מאשר היום', icon="🚨")
         st.stop()
     else: 
@@ -142,7 +142,7 @@ if choose == "**התאריך הממוצע**":
     middle_date = st.sidebar.date_input("בחר תאריך הממוצע לתשלום ", value=None)  
     if middle_date == None:
         st.stop()  
-    if middle_date < today_is.date():
+    if middle_date < dt.now(pytz.timezone('Israel')).date():
         st.sidebar.warning('התאריך הממוצע לא יכול להיות מוקדם יותר מאשר היום', icon="🚨")
         st.stop()
     else: 
