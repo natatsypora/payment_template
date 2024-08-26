@@ -67,7 +67,7 @@ with tab2:
     st.plotly_chart(all_holidays_table(all_bh))
     #Add link buttons
     col_1, col_2, col_3 = st.columns(3)
-    col_1.link_button('להורד את הקובץ', url=url, help='Click to download the csv file')
+    col_1.link_button('להורד את הקובץ', url=url, help='Click to download the csv file', use_container_width=True)
     col_2.link_button(":rainbow[מועדי החופשות בבורסה]", "https://www.tase.co.il/he/content/knowledge_center/trading_vacation_schedule#vacations", use_container_width=True) 
     col_3.link_button('ימי פעילות מערכת זה"ב', "https://www.boi.org.il/roles/paymentsystems/ilpaymentsystems/zahav/", use_container_width=True)
 
