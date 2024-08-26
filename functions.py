@@ -6,9 +6,9 @@ import pytz
 
 
 #Define colors for the table
-bg_head='rgb(174,190,228)' 
-bg_body='rgba(228, 222, 249, 0.4)'
-f_color_title='#536490'
+bg_head='#BCD9EC'
+bg_body='rgba(255, 255, 255, 0.3)'
+f_color_title='#1E5473'
 line_color='#536490'
 
 # Define the Google Drive file URL for 'bank_holidays.csv
