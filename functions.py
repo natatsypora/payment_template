@@ -1,12 +1,18 @@
 import pandas as pd
 import streamlit as st
 from datetime import date, timedelta, datetime as dt
+import plotly.graph_objects as go
 import pytz
 
 
-# Define the Google Drive file URL
-# holidays.csv'
-url = 'https://drive.google.com/file/d/1G_U4o89-RUjIaTB466grwhLnWZ2dkNuU/view?usp=sharing'
+#Define colors for the table
+bg_head='rgb(174,190,228)' 
+bg_body='rgba(228, 222, 249, 0.4)'
+f_color_title='#536490'
+line_color='#536490'
+
+# Define the Google Drive file URL for 'bank_holidays.csv
+url = 'https://drive.google.com/file/d/1m7Z6umeKpMj-rikz_wjvId7zIyUZ5yTF/view?usp=sharing'
 
 # Define the function to get the file path and download the file
 def get_path_from_url(url):
@@ -78,5 +84,27 @@ def sequence_workdays_start(start_date, cust_freq, sum_of_payments, n_payments):
     df_dates['pay_days'] = pd.to_datetime(df_dates['pay_days']).dt.date
 
     return df_dates
+
+#----------All Holidays Table --------------------------------------
+@st.cache_data
+def all_holidays_table(all_bh):   
+        fig = go.Figure(data=[go.Table(
+        columnwidth = [150]+[50]*10,
+        header = dict(
+            values = [f'<b>{h}<b>' for h in all_bh.columns],            
+            fill_color=bg_head,
+            font_size=16, font_color='rgba(0, 0, 0, 0.7)',
+            height=40),
+        cells=dict(
+            values=all_bh.T.values,            
+            fill_color=[bg_head]+[bg_body]*10,
+            font_size=16,
+            height=35))
+        ])
+        fig.update_layout(title=f'Bank Holidays 2024-2033', title_x=0.4, 
+                          title_font_size=20, title_font_color=f_color_title,
+                          width=800, height=all_bh.shape[0]*35+150, 
+                          margin=dict(l=10, r=10, b=10, t=70))
+        return fig
 
 

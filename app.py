@@ -47,25 +47,36 @@ st.markdown("<p style='text-align: center; color: rgb(10 39 67); font-size: 1.5e
 
 avs(1)
 
-tab1, tab2 = st.tabs(["תשלומים", "לוחות שנה"])
+tab1, tab2, tab3 = st.tabs(["תשלומים", "חגים בנקאיים",  "לוחות שנה"])
 with tab1:
     tab_df, tab_img = st.columns(2)
     tab_img.image('image/Check-Printing.png')
     tab_img.write()
 
 #----------Definition of tabs--------------------------------------------------------------
-with tab2.expander("2024-2026 לוח חופשות"):    
-        l_col, r_col = st.columns(2)          
-        l_col.dataframe(h_days.style.format({'תאריך':'{:%Y-%m-%d}'}).set_properties(**properties))
-        r_col.markdown("<p style='text-align: center;'>&ensp;רשימת התשלומים אינה כוללת חגים בנקאיים</p><br>", unsafe_allow_html=True)
-        r_col.link_button(":rainbow[מועדי החופשות בבורסה]", "https://www.tase.co.il/he/content/knowledge_center/trading_vacation_schedule#vacations", use_container_width=True)        
-        r_col.link_button("לוחות שנה עם חגים", "https://calendar.2net.co.il/annual-calendar.aspx", use_container_width=True)
-        r_col.link_button('ימי פעילות מערכת זה"ב', "https://www.boi.org.il/roles/paymentsystems/ilpaymentsystems/zahav/", use_container_width=True)
-with tab2.expander("2024 לוח שנתי עם חגים"):
+with tab2:    
+    # Create the all holidays table
+    all_bh = pd.crosstab(h_days['מועד'], 
+                         h_days['שנה'],
+                         values= h_days['תאריך'], 
+                         aggfunc='min').sort_values(by=2024)
+    for col in all_bh.columns:
+        all_bh[col] = all_bh[col].apply(lambda x : x.strftime('%d-%m'))
+    all_bh = all_bh.reset_index()  
+    #Display the table chart
+    st.plotly_chart(all_holidays_table(all_bh))
+    #Add link buttons
+    col_1, col_2, col_3 = st.columns(3)
+    col_1.link_button('להורד את הקובץ', url=url, help='Click to download the csv file')
+    col_2.link_button(":rainbow[מועדי החופשות בבורסה]", "https://www.tase.co.il/he/content/knowledge_center/trading_vacation_schedule#vacations", use_container_width=True) 
+    col_3.link_button('ימי פעילות מערכת זה"ב', "https://www.boi.org.il/roles/paymentsystems/ilpaymentsystems/zahav/", use_container_width=True)
+
+tab3.link_button("לוחות שנה עם חגים", "https://calendar.2net.co.il/annual-calendar.aspx", use_container_width=True)
+with tab3.expander("2024 לוח שנתי עם חגים"):
     st.image("image/calendar2024.jpg")
-with tab2.expander("2025 לוח שנתי עם חגים"):
+with tab3.expander("2025 לוח שנתי עם חגים"):
     st.image("image/calendar2025.jpg")
-with tab2.expander("2026 לוח שנתי עם חגים"):
+with tab3.expander("2026 לוח שנתי עם חגים"):
     st.image("image/calendar2026.jpg")        
 
 #=================Sidebar========================================================
