@@ -85,7 +85,7 @@ with tab3.expander("2026 לוח שנה עם חגים"):
 #=================Sidebar========================================================
 with st.sidebar:
         st.write(dt.now(pytz.timezone('Israel')).strftime("Today is %A : **%d %B %Y**"), unsafe_allow_html=True)
-        st.write(dt.now(pytz.timezone('Israel')).strftime("&emsp;Current time : **%I:%M %p**"), unsafe_allow_html=True)
+        st.write(dt.now(pytz.timezone('Israel')).strftime("&emsp;Current time : **%H:%M %p**"), unsafe_allow_html=True)
         st.divider()
 choose = st.sidebar.radio(
         "בחר תבנית ליצירת הרשימה",
