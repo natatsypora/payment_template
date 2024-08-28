@@ -71,12 +71,15 @@ with tab2:
     col_2.link_button(":rainbow[מועדי החופשות בבורסה]", "https://www.tase.co.il/he/content/knowledge_center/trading_vacation_schedule#vacations", use_container_width=True) 
     col_3.link_button('ימי פעילות מערכת זה"ב', "https://www.boi.org.il/roles/paymentsystems/ilpaymentsystems/zahav/", use_container_width=True)
 
-tab3.link_button("לוחות שנה עם חגים", "https://calendar.2net.co.il/annual-calendar.aspx", use_container_width=True)
-with tab3.expander("2024 לוח שנתי עם חגים"):
+with tab3:
+    col_d, col_n = st.columns(2)
+    col_d.link_button(":rainbow[לוח שנה דינמי עם חגים]", "https://dynamic-calendar.streamlit.app", use_container_width=True)
+    col_n.link_button("לוח שנה שנתי עם חגים", "https://calendar.2net.co.il/annual-calendar.aspx", use_container_width=True)
+with tab3.expander("2024 לוח שנה עם חגים"):
     st.image("image/calendar2024.jpg")
-with tab3.expander("2025 לוח שנתי עם חגים"):
+with tab3.expander("2025 לוח שנה עם חגים"):
     st.image("image/calendar2025.jpg")
-with tab3.expander("2026 לוח שנתי עם חגים"):
+with tab3.expander("2026 לוח שנה עם חגים"):
     st.image("image/calendar2026.jpg")        
 
 #=================Sidebar========================================================
